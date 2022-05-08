@@ -4,9 +4,117 @@
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Sun, 08 May 2022 09:03:06 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 08 May 2022 09:56:18 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
+        <item>
+            <title><![CDATA[HJKL | VimEverywhere]]></title>
+            <guid>9144f51c44054f2390a9fa7e0b1870eb</guid>
+            <pubDate>Sun, 08 May 2022 09:45:09 GMT</pubDate>
+            <content:encoded><![CDATA[<h1 id="hjkl-vimeverywhere">HJKL | VimEverywhere</h1>
+<blockquote>
+<p>#vim-everywhere</p>
+</blockquote>
+<h1 id="terminal">Terminal</h1>
+<h2 id="vim">Vim</h2>
+<ul>
+<li><code>hjkl</code>
+<ul>
+<li>normal-mode</li>
+<li>navigation</li>
+<li>achieve: out-of-box</li>
+</ul>
+</li>
+<li><code>&lt;c&gt;+hjkl</code>
+<ul>
+<li>window navigation</li>
+<li>achieve: vim-setting
+<ul>
+<li><code>.config/nvim/lua/user/no-leader-keymappings.lua</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="tmux">Tmux</h2>
+<ul>
+<li><code>&lt;c-m&gt;+hjkl</code>
+<ul>
+<li>pane navigation</li>
+<li>achieve: hammer-spoon</li>
+</ul>
+</li>
+</ul>
+<h1 id="firefoxchrome">Firefox/Chrome</h1>
+<ul>
+<li><code>&lt;c-m&gt;+hjkl</code>
+<ul>
+<li>tab navigation</li>
+<li>achieve: hammer-spoon</li>
+</ul>
+</li>
+</ul>
+<h2 id="surfingkey">Surfingkey</h2>
+<ul>
+<li><code>v</code> mode <code>hjkl</code>
+<ul>
+<li>selection/navigation</li>
+<li>achieve: out-of-box</li>
+</ul>
+</li>
+</ul>
+<h1 id="software-window-management">Software window management</h1>
+<ul>
+<li><code>&lt;hyper&gt;+hjkl</code>
+<ul>
+<li>window management</li>
+<li>achieve: alfred</li>
+</ul>
+</li>
+</ul>
+<h1 id="intellj-idea">Intellj IDEA</h1>
+<ul>
+<li><code>&lt;c&gt;-hjkl</code>
+<ul>
+<li>window navigation</li>
+<li>achieve: settings</li>
+</ul>
+</li>
+</ul>
+<h2 id="ideavim">Ideavim</h2>
+<ul>
+<li><code>hjkl</code>
+<ul>
+<li>navigation</li>
+<li>achieve: out-of-box</li>
+</ul>
+</li>
+</ul>
+<h1 id="vscode">Vscode</h1>
+<ul>
+<li><code>hjkl</code>
+<ul>
+<li>achieveBy: vim-plugin</li>
+</ul>
+</li>
+<li><code>&lt;c&gt;-hjkl</code>
+<ul>
+<li>window navigation</li>
+<li>achieve: settings</li>
+</ul>
+</li>
+</ul>
+<h1 id="warpd">Warpd</h1>
+<ul>
+<li><code>hjkl</code>
+<ul>
+<li>cursor movement</li>
+<li>achieve: out-of-box</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Plugin | Neovim]]></title>
             <guid>97639aeff6f8425ab8ddb41c3b127934</guid>
