@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>Lsp config | nvim - Lintao</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">Lintao</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">Lsp config | nvim</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1652004333154"
+                  >2022-05-08 18:05</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1652005537332"
+                  >2022-05-08 18:25</time
+                ></span
+              >
+            </div>
+            
+            <div>
+              Keywords: 
+              <span class="keyword">vim</span>
+              
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h1 id="lsp-config-nvim">Lsp config | nvim</h1>
+<blockquote>
+<p>#vim
+Full config code can be seen in <a title="https://github.com/LintaoAmons/Neovim-from-scratch" href="https://github.com/LintaoAmons/Neovim-from-scratch">github</a></p>
+</blockquote>
+<div><pre class="hljs"><code>.                                   # --&gt; $HOME/.config/nvim/lua/user
+├── cmp.lua                         # --&gt; <span class="hljs-number">2.</span> 这里面的 source 要设置
+├── colorscheme.lua                
+├── lsp                             # --&gt; lsp <span class="hljs-keyword">module</span>
+│   ├── handlers.lua                # --&gt; 大部分的 lsp 设置： 图标，快捷键 etc.
+│   ├── init.lua                    # --&gt; init.lua require `usre.lsp` 的时候就是 `source` 的这个文件
+│   ├── lsp-installer.lua           # --&gt; 这里会去<span class="hljs-keyword">import</span> 下面的特殊settings
+│   └── settings                    # --&gt; 各个特殊的setting
+│       ├── jsonls.lua
+│       ├── pyright.lua
+│       └── sumneko_lua.lua
+├── no-leader-keymappings.lua
+├── options.lua
+└── plugins.lua                     # <span class="hljs-number">1</span> --&gt; 这里添加插件</code></pre></div>
+<ol>
+<li>plugins.lua</li>
+</ol>
+<div><pre class="hljs"><code>...
+  use <span class="hljs-string">"hrsh7th/cmp-nvim-lsp"</span>  <span class="hljs-comment">-- 这个是给 cmp 添加 lsp source 支持的</span>
+  use <span class="hljs-string">"hrsh7th/cmp-nvim-lua"</span>  <span class="hljs-comment">-- 这个是给 cmp 添加 nvim lua 配置文件支持的</span>
+  <span class="hljs-comment">-- LSP</span>
+  use <span class="hljs-string">"neovim/nvim-lspconfig"</span> <span class="hljs-comment">-- enable LSP</span>
+  use <span class="hljs-string">"williamboman/nvim-lsp-installer"</span> <span class="hljs-comment">-- simple to use language server installer</span>
+...</code></pre></div>
+<ol start="2">
+<li>cmp.lua</li>
+</ol>
+<blockquote>
+<p><a title="https://github.com/topics/nvim-cmp" href="https://github.com/topics/nvim-cmp">See more sources</a></p>
+</blockquote>
+<p>这里的 sources 要配置才能生效</p>
+<div><pre class="hljs"><code>...
+  sources = {
+    { name = <span class="hljs-string">"nvim_lsp"</span> },
+    { name = <span class="hljs-string">"nvim_lua"</span> },
+    { name = <span class="hljs-string">"luasnip"</span> },
+    { name = <span class="hljs-string">"buffer"</span> },
+    { name = <span class="hljs-string">"path"</span> },
+  },
+...</code></pre></div>
+</div>
+      </article>
+    </div>
+  </body>
+</html>
