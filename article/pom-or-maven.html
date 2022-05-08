@@ -1,65 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-    <channel>
-        <title></title>
-        <link>undefined</link>
-        <description>undefined</description>
-        <lastBuildDate>Sun, 08 May 2022 08:50:54 GMT</lastBuildDate>
-        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-        <generator>Joplin Pages Publisher</generator>
-        <item>
-            <title><![CDATA[Plugin | Neovim]]></title>
-            <guid>97639aeff6f8425ab8ddb41c3b127934</guid>
-            <pubDate>Sat, 07 May 2022 08:52:06 GMT</pubDate>
-            <content:encoded><![CDATA[<h1 id="plugin-neovim">Plugin | Neovim</h1>
-<blockquote>
-<p>#vim</p>
-</blockquote>
-<h1 id="packer">Packer</h1>
-<ul>
-<li>插件的<code>location</code>
-<ul>
-<li><code>$HOME/.local/share/nvim</code></li>
-<li><code>$HOME/.local/share/nvim/site/pack/packer</code><div><pre class="hljs"><code>$ tree packer -L 1
-packer  <span class="hljs-comment"># --&gt; 插件目录</span>
-├── opt  <span class="hljs-comment"># --&gt; lazyload 插件</span>
-└── start   <span class="hljs-comment"># --&gt; 打开 vim 就 load 的插件</span></code></pre></div>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="添加插件">添加插件</h2>
-<hr />
-<div><pre class="hljs"><code>use {<span class="hljs-string">'iamcco/markdown-preview.nvim'</span>, <span class="hljs-built_in">run</span> = <span class="hljs-string">'cd app &amp;&amp; yarn install'</span>, cmd = <span class="hljs-string">'MarkdownPreview'</span>}</code></pre></div>
-<ul>
-<li><strong>lazyload</strong> on <code>cmd = 'MarkdownPreview'</code></li>
-<li><code>run = 'cd app &amp;&amp; yarn install'</code>
-<ul>
-<li><code>cd app</code>: <code>app</code> 是 <code>clone</code> 下来这个<strong>repo的根目录为相对路径</strong>下的 app 文件夹,即 <code>/Users/lintao.zhang/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim</code><div><pre class="hljs"><code>.
-├── README.md
-├── app            <span class="hljs-comment"># --&gt; 就这里</span>
-├── <span class="hljs-built_in">autoload</span></code></pre></div>
-</li>
-</ul>
-</li>
-</ul>
-<hr />
-<div><pre class="hljs"><code>-- Load <span class="hljs-keyword">on</span> an autocommand <span class="hljs-keyword">event</span>
-use {<span class="hljs-string">'andymass/vim-matchup'</span>, <span class="hljs-keyword">event</span> = <span class="hljs-string">'VimEnter'</span>}</code></pre></div>
-<ul>
-<li><code>event = 'VimEnter'</code>: 当这个事件触发是，加载该插件
-<blockquote>
-<p>autocmd 会涉及到很多 <code>vim event</code></p>
-</blockquote>
-</li>
-</ul>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[POM | Maven]]></title>
-            <guid>5b8b8eea51db43ab92ba86e743d6c321</guid>
-            <pubDate>Sun, 01 May 2022 01:45:01 GMT</pubDate>
-            <content:encoded><![CDATA[<h1 id="pom-maven">POM | Maven</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>POM | Maven - Lintao</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">Lintao</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">POM | Maven</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1651369501603"
+                  >2022-05-01 09:45</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1651999758521"
+                  >2022-05-08 16:49</time
+                ></span
+              >
+            </div>
+            
+            <div>
+              Keywords: 
+              <span class="keyword">maven</span>
+              
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h1 id="pom-maven">POM | Maven</h1>
 <blockquote>
 <p>#maven
 <a title="https://maven.apache.org/guides/introduction/introduction-to-the-pom.html" href="https://maven.apache.org/guides/introduction/introduction-to-the-pom.html">https://maven.apache.org/guides/introduction/introduction-to-the-pom.html</a></p>
@@ -115,7 +94,8 @@ use {<span class="hljs-string">'andymass/vim-matchup'</span>, <span class="hljs-
 <ul>
 <li>where is the SuperPom: <a title="https://stackoverflow.com/questions/6797209/where-is-super-pom-for-maven-3" href="https://stackoverflow.com/questions/6797209/where-is-super-pom-for-maven-3">https://stackoverflow.com/questions/6797209/where-is-super-pom-for-maven-3</a></li>
 </ul>
-]]></content:encoded>
-        </item>
-    </channel>
-</rss>
+</div>
+      </article>
+    </div>
+  </body>
+</html>
