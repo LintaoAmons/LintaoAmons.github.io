@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>pair &amp;&amp; ipair | Lua - Lintao</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">Lintao</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">pair &amp;&amp; ipair | Lua</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1652164186343"
+                  >2022-05-10 14:29</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1652165449911"
+                  >2022-05-10 14:50</time
+                ></span
+              >
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h1 id="pair-ipair-lua">pair &amp;&amp; ipair | Lua</h1>
+<blockquote>
+<p>#lua</p>
+</blockquote>
+<ul>
+<li>
+<p><code>ipairs</code> 把 table 当作 <strong>Array</strong> 遍历.</p>
+<ul>
+<li><strong>就是把 table 当作数组，按照 index 遍历，遇到 nil 值之后认为数组终止</strong>.
+<ul>
+<li><code>index</code> 就是连续的整数</li>
+<li>某一个整数取值为 nil 则停止遍历</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>key为数组的index，遇到下一个index对应的value 为 nil，则认为数组结束，结束遍历
+即 value 不能为 nil,如果遇到 nil 则退出。
+按照整数自然顺序进行遍历，可以理解为在遍历 key=1,2,3,4,…,n 连续取值时的value；
+key若断开，遍历终止，比如 1，2，4，就只会遍历 table[1], table[2]</p>
+</blockquote>
+</li>
+<li>
+<p><code>pairs</code> 把 table 当作 <strong>Map</strong> 遍历.</p>
+<ul>
+<li>给键就找值，不管值是什么(ipair遇到值为nil会认为数组结束,从而停止遍历)</li>
+</ul>
+</li>
+</ul>
+<div><pre class="hljs"><code>&gt; tbl2 = {}
+&gt; tbl2[<span class="hljs-number">1</span>] = <span class="hljs-string">"1"</span>
+&gt; tbl2[<span class="hljs-number">2</span>] = <span class="hljs-string">"2"</span>
+&gt; tbl2[<span class="hljs-number">3</span>] = <span class="hljs-string">"3"</span>
+&gt; tbl2[<span class="hljs-number">5</span>] = <span class="hljs-string">"5"</span>
+
+&gt; <span class="hljs-keyword">for</span> i, v <span class="hljs-keyword">in</span> <span class="hljs-built_in">ipairs</span>(tbl2) <span class="hljs-keyword">do</span>
+&gt;&gt;     <span class="hljs-built_in">print</span>(i, <span class="hljs-string">'='</span>, v)
+&gt;&gt; <span class="hljs-keyword">end</span>
+<span class="hljs-number">1</span>       =       <span class="hljs-number">1</span>
+<span class="hljs-number">2</span>       =       <span class="hljs-number">2</span>
+<span class="hljs-number">3</span>       =       <span class="hljs-number">3</span>
+
+&gt; <span class="hljs-keyword">for</span> i, v <span class="hljs-keyword">in</span> <span class="hljs-built_in">pairs</span>(tbl2) <span class="hljs-keyword">do</span>
+&gt;&gt;     <span class="hljs-built_in">print</span>(i, <span class="hljs-string">'='</span>, v)
+&gt;&gt; <span class="hljs-keyword">end</span>
+<span class="hljs-number">1</span>       =       <span class="hljs-number">1</span>
+<span class="hljs-number">2</span>       =       <span class="hljs-number">2</span>
+<span class="hljs-number">3</span>       =       <span class="hljs-number">3</span>
+<span class="hljs-number">5</span>       =       <span class="hljs-number">5</span></code></pre></div>
+</div>
+      </article>
+    </div>
+  </body>
+</html>
