@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>Settings | Maven - Lintao</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">Lintao</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">Settings | Maven</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1650516662641"
+                  >2022-04-21 12:51</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1651369249855"
+                  >2022-05-01 09:40</time
+                ></span
+              >
+            </div>
+            
+            <div>
+              Keywords: 
+              <span class="keyword">maven</span>
+              
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h1 id="settings-maven">Settings | Maven</h1>
+<blockquote>
+<p>#maven</p>
+</blockquote>
+<h1 id="默认-settings-文件-maven">默认 Settings 文件 ｜ Maven</h1>
+<ul>
+<li>
+<p><code>$M2_HOME</code> 环境变量将决定 <code>maven</code> 用哪个</p>
+</li>
+<li>
+<p>在我 <code>Mac</code> 本机上是用的 MavenWrapper</p>
+<div><pre class="hljs"><code>~ ❯ <span class="hljs-built_in">echo</span> <span class="hljs-variable">$M2_HOME</span>
+/Users/lintao.zhang/.m2/wrapper/dists/apache-maven-3.6.3-bin/1iopthnavndlasol9gbrbg6bf2/apache-maven-3.6.3
+~ ❯ ls /Users/lintao.zhang/.m2/wrapper/dists/apache-maven-3.6.3-bin/1iopthnavndlasol9gbrbg6bf2/apache-maven-3.6.3/conf/
+logging        settings.xml   toolchains.xml</code></pre></div>
+</li>
+<li>
+<p>或者直接把 <code>bin</code> 放到 <code>/opt/maven</code> 下</p>
+<blockquote>
+<p><a title="https://www.itzgeek.com/how-tos/linux/debian/how-to-install-apache-maven-on-debian-11.html" href="https://www.itzgeek.com/how-tos/linux/debian/how-to-install-apache-maven-on-debian-11.html">https://www.itzgeek.com/how-tos/linux/debian/how-to-install-apache-maven-on-debian-11.html</a>
+<a>Linux 文件与目录结构#树状目录结构</a></p>
+</blockquote>
+<div><pre class="hljs"><code>➜  conf <span class="hljs-built_in">echo</span> <span class="hljs-variable">$M2_HOME</span>
+/opt/maven
+➜  conf ls /opt/maven/conf
+logging  settings.xml  toolchains.xml</code></pre></div>
+</li>
+</ul>
+<h1 id="常用配置">常用配置</h1>
+<blockquote>
+<p>http://heavy_code_industry.gitee.io/code_heavy_industry/pro002-maven/chapter02/verse01.html</p>
+</blockquote>
+<h2 id="localrepository-指定本地仓库"><code>&lt;localRepository&gt;</code> 指定本地仓库</h2>
+<p>本地仓库默认值：用户家目录<code>/.m2/repository</code>。修改仓库位置方法，配置方式如下：</p>
+<div><pre class="hljs"><code><span class="hljs-comment">&lt;!-- localRepository
+| The path to the local repository maven will use to store artifacts.
+|
+| Default: ${user.home}/.m2/repository
+&lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;
+--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">localRepository</span>&gt;</span>D:\maven-repository<span class="hljs-tag">&lt;/<span class="hljs-name">localRepository</span>&gt;</span></code></pre></div>
+<p>本地仓库这个目录，我们手动创建一个空的目录即可。</p>
+<p>注意：本地仓库本身也需要使用一个非中文、没有空格的目录。</p>
+<h2 id="mirror-配置阿里云提供的镜像仓库"><code>&lt;mirror&gt;</code> 配置阿里云提供的镜像仓库</h2>
+<blockquote>
+<p><a>Docker 配置国内镜像源</a></p>
+</blockquote>
+<p>Maven 下载 jar 包默认访问境外的中央仓库，而国外网站速度很慢。改成阿里云提供的镜像仓库，访问国内网站，可以让 Maven 下载 jar 包的时候速度更快。配置的方式是：</p>
+<ul>
+<li>
+<p>将原有的例子配置注释掉</p>
+<div><pre class="hljs"><code><span class="hljs-comment">&lt;!-- &lt;mirror&gt;
+  &lt;id&gt;maven-default-http-blocker&lt;/id&gt;
+  &lt;mirrorOf&gt;external:http:*&lt;/mirrorOf&gt;
+  &lt;name&gt;Pseudo repository to mirror external repositories initially using HTTP.&lt;/name&gt;
+  &lt;url&gt;http://0.0.0.0/&lt;/url&gt;
+  &lt;blocked&gt;true&lt;/blocked&gt;
+&lt;/mirror&gt; --&gt;</span></code></pre></div>
+</li>
+<li>
+<p>加入我们的配置</p>
+<ul>
+<li>将下面 <code>mirror</code> 标签整体复制到 <code>settings.xml</code> 文件的 <code>mirrors</code> 标签的内部。</li>
+</ul>
+<div><pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">mirror</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>nexus-aliyun<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">mirrorOf</span>&gt;</span>central<span class="hljs-tag">&lt;/<span class="hljs-name">mirrorOf</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Nexus aliyun<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">mirror</span>&gt;</span></code></pre></div>
+</li>
+</ul>
+<h2 id="prifile-配置-maven-工程的基础-jdk-版本"><code>&lt;prifile&gt;</code> 配置 Maven 工程的基础 JDK 版本</h2>
+<p>如果按照默认配置运行，Java 工程使用的默认 JDK 版本是 1.5，而我们熟悉和常用的是 JDK 1.8 版本。修改配置的方式是：将 profile 标签整个复制到 settings.xml 文件的 profiles 标签内。</p>
+<div><pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">profile</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>jdk-1.8<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">activation</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">activeByDefault</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">activeByDefault</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">jdk</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">jdk</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">activation</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.compilerVersion</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.compilerVersion</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">profile</span>&gt;</span></code></pre></div>
+</div>
+      </article>
+    </div>
+  </body>
+</html>

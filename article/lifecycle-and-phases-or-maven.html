@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>Lifecycle and Phases | Maven - Lintao</title>
+  </head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">Lintao</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">Lifecycle and Phases | Maven</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1646360407390"
+                  >2022-03-04 10:20</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1651658811553"
+                  >2022-05-04 18:06</time
+                ></span
+              >
+            </div>
+            
+            <div>
+              Keywords: 
+              <span class="keyword">maven</span>
+              
+              <span class="keyword">todo</span>
+              
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h1 id="lifecycle-and-phases-maven">Lifecycle and Phases | Maven</h1>
+<blockquote>
+<p>#maven
+<a href="/article/or-maven-2">生命周期 | Maven</a></p>
+</blockquote>
+<h1 id="built-in-build-lifecycles">Built-in build lifecycles</h1>
+<ul>
+<li>default</li>
+<li>clean</li>
+<li>site</li>
+</ul>
+<h1 id="phases">Phases</h1>
+<p>A build lifecycle is made up of <strong>Phases</strong></p>
+<p>For example, the <strong>default lifecycle</strong> comprises of the following phases (for a complete list of the lifecycle phases, refer to the Lifecycle Reference):</p>
+<ul>
+<li><code>validate</code> - validate the project is correct and all necessary information is available</li>
+<li><code>compile</code> - compile the source code of the project</li>
+<li><code>test</code> - test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed</li>
+<li><code>package</code> - take the compiled code and package it in its distributable format, such as a JAR.</li>
+<li><code>verify</code> - run any checks on results of integration tests to ensure quality criteria are met</li>
+<li><code>install</code> - install the package into the local repository, for use as a dependency in other projects locally</li>
+<li><code>deploy</code> - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects.
+#todo</li>
+</ul>
+</div>
+      </article>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>约定的目录结构 | Maven - Lintao</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">Lintao</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">约定的目录结构 | Maven</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1651369663154"
+                  >2022-05-01 09:47</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1651370244012"
+                  >2022-05-01 09:57</time
+                ></span
+              >
+            </div>
+            
+            <div>
+              Keywords: 
+              <span class="keyword">maven</span>
+              
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h1 id="约定的目录结构-maven">约定的目录结构 | Maven</h1>
+<blockquote>
+<p>#maven</p>
+</blockquote>
+<div><pre class="hljs"><code>.
+├── src     <span class="hljs-comment"># 源码目录</span>
+│   ├── main    <span class="hljs-comment"># 主体程序目录</span>
+│   │   ├── java    <span class="hljs-comment"># java 源代码</span>
+│   │   ├── kotlin    <span class="hljs-comment"># kotlin 源代码</span>
+│   │   │   └── top.oatnil.accountsystem    <span class="hljs-comment"># package 目录</span>
+│   │   └── resources    <span class="hljs-comment"># 配置文件</span>
+│   │       ├── static
+│   │       └── templates
+│   └── <span class="hljs-keyword">test</span>    <span class="hljs-comment"># 测试程序目录</span>
+│       └── kotlin
+│           └── top.oatnil.accountsystem
+└── <span class="hljs-keyword">target</span>    <span class="hljs-comment"># 构建结构输出目录</span></code></pre></div>
+<h1 id="约定目录结构的意义">约定目录结构的意义</h1>
+<p>Maven 为了让构建过程能够尽可能自动化完成，所以必须约定目录结构的作用。例如：Maven 执行编译操作，必须先去 Java 源程序目录读取 Java 源代码，然后执行编译，最后把编译结果存放在 target 目录。</p>
+<h1 id="约定大于配置">约定大于配置</h1>
+<p>Maven 对于目录结构这个问题，没有采用配置的方式，而是基于约定。这样会让我们在开发过程中非常方便。如果每次创建 Maven 工程后，还需要针对各个目录的位置进行详细的配置，那肯定非常麻烦。</p>
+<p>目前开发领域的技术发展趋势就是：<strong>约定大于配置，配置大于编码</strong>。</p>
+<blockquote>
+<p>程序员就是想偷懒，革自己的命</p>
+</blockquote>
+</div>
+      </article>
+    </div>
+  </body>
+</html>

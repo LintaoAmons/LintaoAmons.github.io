@@ -4,9 +4,266 @@
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Tue, 10 May 2022 12:44:32 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 13 May 2022 13:15:56 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
+        <item>
+            <title><![CDATA[项目继承与聚合 ｜ Maven]]></title>
+            <guid>4c5d4f2c0f754d0c9019087edb85789e</guid>
+            <pubDate>Fri, 13 May 2022 13:05:24 GMT</pubDate>
+            <content:encoded><![CDATA[<h1 id="项目继承与聚合-maven">项目继承与聚合 ｜ Maven</h1>
+<blockquote>
+<p>#maven</p>
+</blockquote>
+<ul>
+<li>
+<p>继承: 如果你有几个Maven项目，而且它们都有<strong>类似的配置</strong>，你可以通过提取这些类似的配置并建立一个父项目来重构你的项目。这样，你所要做的就是让你的Maven项目继承该父项目，然后这些配置就会应用到所有项目中。</p>
+</li>
+<li>
+<p>聚合： 如果你有<strong>一组项目是一起构建或处理的</strong>，你可以创建一个父项目，让该父项目将这些项目声明为其模块。通过这样做，你只需要构建父项目，其余的就会跟上。</p>
+</li>
+<li>
+<p>同时继承和聚合。也就是说，你可以让你的模块指定一个父项目，同时让该父项目指定这些Maven项目作为其模块。你只需使用这三条规则即可:</p>
+<ul>
+<li>在每个子POM中指定谁是其父POM。</li>
+<li>将父POM的包装改为 “pom”。</li>
+<li>在父POM中指定其模块的目录（子POM）。</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[标签们 | Maven]]></title>
+            <guid>5602d16260464f55aa8e43d5340205e5</guid>
+            <pubDate>Fri, 13 May 2022 12:51:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1 id="标签们-maven">标签们 | Maven</h1>
+<blockquote>
+<p><a href="/article/pom-or-maven">POM | Maven</a>
+<a title="https://maven.apache.org/pom.html" href="https://maven.apache.org/pom.html">Maven Pom Reference</a></p>
+</blockquote>
+<h2 id="packaging"><code>&lt;packaging&gt;</code></h2>
+<blockquote>
+<p><a title="#%E5%9F%BA%E7%A1%80pom%E6%96%87%E4%BB%B6%E8%A7%A3%E8%AF%BB" href="#%E5%9F%BA%E7%A1%80pom%E6%96%87%E4%BB%B6%E8%A7%A3%E8%AF%BB">基础pom文件解读</a>
+<a title="https://maven.apache.org/pom.html#packaging" href="https://maven.apache.org/pom.html#packaging">https://maven.apache.org/pom.html#packaging</a>
+<a href="/article/lifecycle-and-phases-or-maven">Lifecycle and Phases | Maven</a></p>
+</blockquote>
+<ul>
+<li>当前主要可选值有
+<ul>
+<li><strong>pom</strong></li>
+<li><strong>jar</strong></li>
+<li><strong>war</strong></li>
+<li><strong>rar</strong></li>
+<li><strong>maven-plugin</strong></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>The current core packaging values are: <strong>pom, jar, maven-plugin, ejb, war, ear, rar</strong>. These define the default list of goals which execute on each corresponding build lifecycle stage for a particular package structure: see Plugin Bindings for default Lifecycle Reference for details</p>
+</blockquote>
+<h2 id="relativepath"><code>&lt;relativePath&gt;</code></h2>
+<blockquote>
+<p><a title="https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#example-2" href="https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#example-2">https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#example-2</a></p>
+</blockquote>
+<p>可以用来处理项目的 <strong>目录结构</strong></p>
+<h2 id="modules-module"><code>&lt;modules&gt;</code> &amp;&amp; <code>&lt;module&gt;</code></h2>
+<blockquote>
+<p><a title="https://maven.apache.org/pom.html#aggregation-or-multi-module" href="https://maven.apache.org/pom.html#aggregation-or-multi-module">https://maven.apache.org/pom.html#aggregation-or-multi-module</a></p>
+</blockquote>
+<p>一般出现在<code>&lt;packaging&gt;pom&lt;/packaging&gt;</code>的POM中，做子模块的聚合（aggregation）</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Minimal POM | Maven]]></title>
+            <guid>a210e901677a49e888cc0a9667a60567</guid>
+            <pubDate>Fri, 13 May 2022 08:25:46 GMT</pubDate>
+            <content:encoded><![CDATA[<h1 id="minimal-pom-maven">Minimal POM | Maven</h1>
+<h2 id="minimum-requirement">Minimum requirement</h2>
+<p>The minimum requirement for a POM are the following:</p>
+<ul>
+<li><code>project</code> root, 根节点</li>
+<li><code>modelVersion</code> - should be set to 4.0.0, 就不用管</li>
+<li>坐标三节点
+<ul>
+<li><code>groupId</code> - the id of the project’s group.</li>
+<li><code>artifactId</code> - the id of the artifact (project)</li>
+<li><code>version</code> - the version of the artifact under the specified group</li>
+<li>These three values form the project’s <strong>fully qualified artifact name</strong>(产物的全限定名, 类似java的全类名).</li>
+</ul>
+</li>
+</ul>
+<h2 id="example">Example:</h2>
+<div><pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">project</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.mycompany.app<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>my-app<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span></code></pre></div>
+<p>A POM requires that its groupId, artifactId, and version be configured. These three values form the project’s fully qualified artifact name. This is in the form of <code>&lt;groupId&gt;:&lt;artifactId&gt;:&lt;version&gt;</code>. As for the example above, its fully qualified artifact name is <code>com.mycompany.app:my-app:1</code>.</p>
+<h2 id="default-values">Default Values</h2>
+<h3 id="packaging">packaging</h3>
+<blockquote>
+<p><a href="/article/pom-or-maven">POM | Maven#基础pom文件解读</a></p>
+</blockquote>
+<p>Also, as mentioned in the first section, if the configuration details are not specified, Maven will use their defaults. One of these default values is the <strong>packaging type</strong>. Every Maven project has a packaging type. If it is not specified in the POM, then the <strong>default value “jar”</strong> would be used.</p>
+<h3 id="repositories">repositories</h3>
+<p>Furthermore, you can see that in the minimal POM the repositories were not specified. If you build your project using the minimal POM, it would inherit the repositories configuration in the Super POM. Therefore when Maven sees the dependencies in the minimal POM, it would know that these dependencies will be downloaded from <code>https://repo.maven.apache.org/maven2</code> which was <strong>specified in the Super POM</strong>.</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Super POM]]></title>
+            <guid>0377239566a3472987b3b5a58c43ad8c</guid>
+            <pubDate>Fri, 13 May 2022 08:22:24 GMT</pubDate>
+            <content:encoded><![CDATA[<h1 id="super-pom">Super POM</h1>
+<blockquote>
+<p><a title="https://maven.apache.org/ref/3.6.3/maven-model-builder/super-pom.html" href="https://maven.apache.org/ref/3.6.3/maven-model-builder/super-pom.html">SuperPom</a>
+<a href="/article/pom-or-maven">POM | Maven</a></p>
+</blockquote>
+<p>The Super POM is Maven’s default POM. All POMs extend the Super POM unless explicitly set, meaning the configuration specified in the Super POM is inherited by the POMs you created for your projects.</p>
+<ul>
+<li>where is the SuperPom: <a title="https://stackoverflow.com/questions/6797209/where-is-super-pom-for-maven-3" href="https://stackoverflow.com/questions/6797209/where-is-super-pom-for-maven-3">https://stackoverflow.com/questions/6797209/where-is-super-pom-for-maven-3</a></li>
+</ul>
+<h2 id="一系列默认值">一系列默认值</h2>
+<ul>
+<li><code>repositories</code></li>
+<li><code>pluginRepositories</code></li>
+<li><code>build</code>
+<ul>
+<li><strong>这里面定义了一系列的路径，这些路径就是项目结构的convention</strong></li>
+</ul>
+</li>
+</ul>
+<div><pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">project</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">repositories</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">repository</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>central<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Central Repository<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>https://repo.maven.apache.org/maven2<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">layout</span>&gt;</span>default<span class="hljs-tag">&lt;/<span class="hljs-name">layout</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">snapshots</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">enabled</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">enabled</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">snapshots</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">repository</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">repositories</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">pluginRepositories</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">pluginRepository</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>central<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Central Repository<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>https://repo.maven.apache.org/maven2<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">layout</span>&gt;</span>default<span class="hljs-tag">&lt;/<span class="hljs-name">layout</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">snapshots</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">enabled</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">enabled</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">snapshots</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">releases</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">updatePolicy</span>&gt;</span>never<span class="hljs-tag">&lt;/<span class="hljs-name">updatePolicy</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">releases</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">pluginRepository</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">pluginRepositories</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">directory</span>&gt;</span>${project.basedir}/target<span class="hljs-tag">&lt;/<span class="hljs-name">directory</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">outputDirectory</span>&gt;</span>${project.build.directory}/classes<span class="hljs-tag">&lt;/<span class="hljs-name">outputDirectory</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">finalName</span>&gt;</span>${project.artifactId}-${project.version}<span class="hljs-tag">&lt;/<span class="hljs-name">finalName</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">testOutputDirectory</span>&gt;</span>${project.build.directory}/test-classes<span class="hljs-tag">&lt;/<span class="hljs-name">testOutputDirectory</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sourceDirectory</span>&gt;</span>${project.basedir}/src/main/java<span class="hljs-tag">&lt;/<span class="hljs-name">sourceDirectory</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">scriptSourceDirectory</span>&gt;</span>${project.basedir}/src/main/scripts<span class="hljs-tag">&lt;/<span class="hljs-name">scriptSourceDirectory</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">testSourceDirectory</span>&gt;</span>${project.basedir}/src/test/java<span class="hljs-tag">&lt;/<span class="hljs-name">testSourceDirectory</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">resources</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">resource</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">directory</span>&gt;</span>${project.basedir}/src/main/resources<span class="hljs-tag">&lt;/<span class="hljs-name">directory</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">resource</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">resources</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">testResources</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">testResource</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">directory</span>&gt;</span>${project.basedir}/src/test/resources<span class="hljs-tag">&lt;/<span class="hljs-name">directory</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">testResource</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">testResources</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">pluginManagement</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- <span class="hljs-doctag">NOTE:</span> These plugins will be removed from future versions of the super POM --&gt;</span>
+      <span class="hljs-comment">&lt;!-- They are kept for the moment as they are very unlikely to conflict with lifecycle mappings (MNG-4453) --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-antrun-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-assembly-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.2-beta-5<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-dependency-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.8<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-release-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.5.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">pluginManagement</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">reporting</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">outputDirectory</span>&gt;</span>${project.build.directory}/site<span class="hljs-tag">&lt;/<span class="hljs-name">outputDirectory</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">reporting</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">profiles</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- <span class="hljs-doctag">NOTE:</span> The release profile will be removed from future versions of the super POM --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">profile</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>release-profile<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">activation</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>performRelease<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">activation</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">inherited</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">inherited</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-source-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">executions</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">execution</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>attach-sources<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">goals</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">goal</span>&gt;</span>jar-no-fork<span class="hljs-tag">&lt;/<span class="hljs-name">goal</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">goals</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">execution</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">executions</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">inherited</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">inherited</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-javadoc-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">executions</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">execution</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>attach-javadocs<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">goals</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">goal</span>&gt;</span>jar<span class="hljs-tag">&lt;/<span class="hljs-name">goal</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">goals</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">execution</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">executions</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">inherited</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">inherited</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-deploy-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">updateReleaseInfo</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">updateReleaseInfo</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">profile</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">profiles</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span></code></pre></div>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[pair && ipair | Lua]]></title>
             <guid>758d9df984a14b79a89bba45f3b1417a</guid>
@@ -270,64 +527,116 @@ use {<span class="hljs-string">'andymass/vim-matchup'</span>, <span class="hljs-
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[POM | Maven]]></title>
-            <guid>5b8b8eea51db43ab92ba86e743d6c321</guid>
-            <pubDate>Sun, 01 May 2022 01:45:01 GMT</pubDate>
-            <content:encoded><![CDATA[<h1 id="pom-maven">POM | Maven</h1>
+            <title><![CDATA[Packaging & Goal | Maven]]></title>
+            <guid>3ac13313592f459ab061b271dd8b66ae</guid>
+            <pubDate>Wed, 04 May 2022 13:05:35 GMT</pubDate>
+            <content:encoded><![CDATA[<h1 id="packaging-goal-maven">Packaging &amp; Goal | Maven</h1>
 <blockquote>
 <p>#maven
-<a title="https://maven.apache.org/guides/introduction/introduction-to-the-pom.html" href="https://maven.apache.org/guides/introduction/introduction-to-the-pom.html">https://maven.apache.org/guides/introduction/introduction-to-the-pom.html</a></p>
+<a title="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference" href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference">详情看这里</a></p>
 </blockquote>
-<h1 id="概念">概念</h1>
-<h2 id="含义">含义</h2>
-<p><code>POM</code>：<strong>Project Object Model</strong>，项目对象模型。和 <code>POM</code> 类似的是：<code>DOM（Document Object Model）</code>，文档对象模型。它们都是模型化思想的具体体现。</p>
-<h2 id="模型化思想">模型化思想</h2>
-<p><code>POM</code> 表示将工程抽象为一个模型，再用程序中的对象来描述这个模型。这样我们就可以用程序来管理项目了。我们在开发过程中，最基本的做法就是将现实生活中的事物抽象为模型，然后封装模型相关的数据作为一个对象，这样就可以在程序中计算与现实事物相关的数据。</p>
-<h2 id="对应的配置文件">对应的配置文件</h2>
-<p><code>POM</code> 理念集中体现在 <code>Maven</code> 工程根目录下 <code>pom.xml</code> 这个配置文件中。所以这个 <code>pom.xml</code> 配置文件就是 <code>Maven</code> 工程的核心配置文件。</p>
-<h1 id="基础pom文件解读">基础POM文件解读</h1>
+<p>不同的 packaging 目标，会绑定不同 goal 到 build phases 上</p>
+<h1 id="jar">jar</h1>
 <blockquote>
-<p><a title="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference" href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference">https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference</a>
-<a>Packaging &amp; Goal | Maven</a></p>
+<p><code>&lt;packaging&gt;jar&lt;/packaging&gt;</code></p>
 </blockquote>
-<div><pre class="hljs"><code><span class="hljs-comment">&lt;!-- 当前Maven工程的坐标 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.atguigu.maven<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>pro01-maven-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-
-<span class="hljs-comment">&lt;!-- 当前Maven工程的打包方式，可选值有下面三种： --&gt;</span>
-<span class="hljs-comment">&lt;!-- jar：表示这个工程是一个Java工程  --&gt;</span>
-<span class="hljs-comment">&lt;!-- war：表示这个工程是一个Web工程 --&gt;</span>
-<span class="hljs-comment">&lt;!-- pom：表示这个工程是“管理其他工程”的工程 --&gt;</span>
-<span class="hljs-comment">&lt;!-- [Packaging &amp; Goal | Maven](:/3ac13313592f459ab061b271dd8b66ae) --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">packaging</span>&gt;</span>jar<span class="hljs-tag">&lt;/<span class="hljs-name">packaging</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>pro01-maven-java<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://maven.apache.org<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- 工程构建过程中读取源码时使用的字符集 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="hljs-tag">&lt;/<span class="hljs-name">project.build.sourceEncoding</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
-
-<span class="hljs-comment">&lt;!-- 当前工程所依赖的jar包 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- 使用dependency配置一个具体的依赖 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-
-  <span class="hljs-comment">&lt;!-- 在dependency标签内使用具体的坐标依赖我们需要的一个jar包 --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>junit<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>junit<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>4.12<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-
-  <span class="hljs-comment">&lt;!-- scope标签配置依赖的范围 --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span></code></pre></div>
-<h1 id="super-pom">Super POM</h1>
-<p>The Super POM is Maven’s default POM. All POMs extend the Super POM unless explicitly set, meaning the configuration specified in the Super POM is inherited by the POMs you created for your projects.</p>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>plugin:goal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>process-resources</td>
+<td>resources:resources</td>
+</tr>
+<tr>
+<td>compile</td>
+<td>compiler:compile</td>
+</tr>
+<tr>
+<td>process-test-resources</td>
+<td>resources:testResources</td>
+</tr>
+<tr>
+<td>test-compile</td>
+<td>compiler:testCompile</td>
+</tr>
+<tr>
+<td>test</td>
+<td>surefire:test</td>
+</tr>
+<tr>
+<td>package</td>
+<td>jar:jar</td>
+</tr>
+<tr>
+<td>install</td>
+<td>install:install</td>
+</tr>
+<tr>
+<td>deploy</td>
+<td>deploy:deploy</td>
+</tr>
+</tbody>
+</table>
+<h1 id="pom">pom</h1>
+<blockquote>
+<p><code>&lt;packagin&gt;pom&lt;/packagin&gt;</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>plugin:goal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>install</td>
+<td>install:install</td>
+</tr>
+<tr>
+<td>deploy</td>
+<td>deploy:deploy</td>
+</tr>
+</tbody>
+</table>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[跳过maven一些插件的检查与测试环节]]></title>
+            <guid>53e9d8d3258e4bad95fbdb89a7696174</guid>
+            <pubDate>Wed, 04 May 2022 09:55:35 GMT</pubDate>
+            <content:encoded><![CDATA[<h1 id="跳过maven一些插件的检查与测试环节">跳过maven一些插件的检查与测试环节</h1>
+<blockquote>
+<p><a title="https://blog.csdn.net/zhuguang_2016/article/details/80086140" href="https://blog.csdn.net/zhuguang_2016/article/details/80086140">https://blog.csdn.net/zhuguang_2016/article/details/80086140</a></p>
+</blockquote>
 <ul>
-<li>where is the SuperPom: <a title="https://stackoverflow.com/questions/6797209/where-is-super-pom-for-maven-3" href="https://stackoverflow.com/questions/6797209/where-is-super-pom-for-maven-3">https://stackoverflow.com/questions/6797209/where-is-super-pom-for-maven-3</a></li>
+<li>
+<p><code>configuration</code> --&gt; 添加特定属性</p>
+<div><pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.codehaus.mojo<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>findbugs-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${maven-findbugs-plugin.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">skip</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">skip</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- 添加skip属性，并赋值true --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">skipTests</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">skipTests</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- 添加skipTests属性，并赋值true --&gt;</span>                             
+    <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span>    </code></pre></div>
+</li>
 </ul>
 ]]></content:encoded>
         </item>

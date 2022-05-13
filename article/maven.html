@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>项目继承与聚合 ｜ Maven - Lintao</title>
+  </head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">Lintao</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">项目继承与聚合 ｜ Maven</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1652447124405"
+                  >2022-05-13 21:05</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1652447435326"
+                  >2022-05-13 21:10</time
+                ></span
+              >
+            </div>
+            
+            <div>
+              Keywords: 
+              <span class="keyword">maven</span>
+              
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h1 id="项目继承与聚合-maven">项目继承与聚合 ｜ Maven</h1>
+<blockquote>
+<p>#maven</p>
+</blockquote>
+<ul>
+<li>
+<p>继承: 如果你有几个Maven项目，而且它们都有<strong>类似的配置</strong>，你可以通过提取这些类似的配置并建立一个父项目来重构你的项目。这样，你所要做的就是让你的Maven项目继承该父项目，然后这些配置就会应用到所有项目中。</p>
+</li>
+<li>
+<p>聚合： 如果你有<strong>一组项目是一起构建或处理的</strong>，你可以创建一个父项目，让该父项目将这些项目声明为其模块。通过这样做，你只需要构建父项目，其余的就会跟上。</p>
+</li>
+<li>
+<p>同时继承和聚合。也就是说，你可以让你的模块指定一个父项目，同时让该父项目指定这些Maven项目作为其模块。你只需使用这三条规则即可:</p>
+<ul>
+<li>在每个子POM中指定谁是其父POM。</li>
+<li>将父POM的包装改为 “pom”。</li>
+<li>在父POM中指定其模块的目录（子POM）。</li>
+</ul>
+</li>
+</ul>
+</div>
+      </article>
+    </div>
+  </body>
+</html>

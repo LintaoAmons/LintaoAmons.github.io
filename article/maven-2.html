@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>坐标与仓库 ｜ Maven - Lintao</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">Lintao</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">坐标与仓库 ｜ Maven</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1650603330901"
+                  >2022-04-22 12:55</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1650603616875"
+                  >2022-04-22 13:00</time
+                ></span
+              >
+            </div>
+            
+            <div>
+              Keywords: 
+              <span class="keyword">maven</span>
+              
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h1 id="坐标与仓库-maven">坐标与仓库 ｜ Maven</h1>
+<blockquote>
+<p>#maven</p>
+</blockquote>
+<h1 id="坐标与仓库">坐标与仓库</h1>
+<h1 id="maven中的坐标">Maven中的坐标</h1>
+<h2 id="向量说明">向量说明</h2>
+<ul>
+<li>使用三个『向量』在『Maven的仓库』中唯一的定位到一个『jar』包。
+<ul>
+<li><code>groupId</code>：公司或组织的 id</li>
+<li><code>artifactId</code>：一个项目或者是项目中的一个模块的 id</li>
+<li><code>version</code>：版本号</li>
+</ul>
+</li>
+</ul>
+<h2 id="三个向量的取值方式">三个向量的取值方式</h2>
+<ul>
+<li>
+<p><code>groupId</code>：公司或组织域名的倒序，通常也会加上项目名称</p>
+<ul>
+<li>例如：<code>com.atguigu.maven</code></li>
+</ul>
+</li>
+<li>
+<p><code>artifactId</code>：模块的名称，将来作为 Maven 工程的工程名</p>
+</li>
+<li>
+<p><code>version</code>：模块的版本号，根据自己的需要设定</p>
+<ul>
+<li>例如：<code>SNAPSHOT</code> 表示快照版本，正在迭代过程中，不稳定的版本</li>
+<li>例如：<code>RELEASE</code> 表示正式版本</li>
+</ul>
+</li>
+<li>
+<p>举例：</p>
+<div><pre class="hljs"><code><span class="hljs-attribute">groupId</span>：com.atguigu.maven
+<span class="hljs-attribute">artifactId</span>：pro01-atguigu-maven
+<span class="hljs-attribute">version</span>：<span class="hljs-number">1</span>.<span class="hljs-number">0</span>-SNAPSHOT</code></pre></div>
+</li>
+</ul>
+<h1 id="fire-仓库路径">🔥 仓库路径</h1>
+<blockquote>
+<p>坐标和仓库中 jar 包的存储路径之间的对应关系</p>
+</blockquote>
+<ul>
+<li>
+<p>坐标：</p>
+<div><pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>javax.servlet<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>servlet-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.5<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span></code></pre></div>
+</li>
+<li>
+<p>上面坐标对应的 jar 包在 Maven 本地仓库中的位置：</p>
+<div><pre class="hljs"><code><span class="hljs-attribute">Maven</span>本地仓库根目录\javax\servlet\servlet-api\<span class="hljs-number">2</span>.<span class="hljs-number">5</span>\servlet-api-<span class="hljs-number">2</span>.<span class="hljs-number">5</span>.jar</code></pre></div>
+<ul>
+<li><code>Maven本地仓库根目录</code>: <a href="/article/settings-or-maven">Settings | Maven#localrepository-指定本地仓库</a></li>
+</ul>
+</li>
+</ul>
+</div>
+      </article>
+    </div>
+  </body>
+</html>

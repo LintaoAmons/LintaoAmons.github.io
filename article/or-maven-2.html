@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>生命周期 | Maven - Lintao</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">Lintao</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">生命周期 | Maven</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1651652612606"
+                  >2022-05-04 16:23</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1651726053085"
+                  >2022-05-05 12:47</time
+                ></span
+              >
+            </div>
+            
+            <div>
+              Keywords: 
+              <span class="keyword">maven</span>
+              
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h1 id="生命周期-maven">生命周期 | Maven</h1>
+<blockquote>
+<p>#maven
+keywords: lifecycle
+<a>Maven#是什么</a>
+<a title="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html" href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html">https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html</a></p>
+</blockquote>
+<p><strong>lifecycle</strong> <code>--made up of--&gt;</code> <strong>build phases</strong> <code>--made up of--&gt;</code> <strong>Plugin Goals</strong></p>
+<h1 id="three-built-in-lifecycles">Three built-in lifecycles</h1>
+<p>Maven总共拥有三套相互独立的生命周期，分别为<code>clean</code>、<code>default</code>和<code>site</code>。clean生命周期的目的是清理项目，default生命周期的目的是构建项目，site目的是建立项目站点。每个生命周期包含一些阶段（phase），这些阶段是有顺序的，并且后面的阶段依赖于前面的阶段。</p>
+<ul>
+<li>There are three built-in build lifecycles: <strong>default</strong>, <strong>clean</strong> and <strong>site</strong>.
+<ul>
+<li>The <strong>default</strong> lifecycle handles your project deployment,</li>
+<li>the <strong>clean</strong> lifecycle handles project cleaning,</li>
+<li>the <strong>site</strong> lifecycle handles the creation of your project’s web site.</li>
+</ul>
+</li>
+</ul>
+<h1 id="build-phases">Build Phases</h1>
+<ul>
+<li>
+<p>每一个构建生命周期(lifecycle)都由 <code>a list of build phases</code> 来定义，其中一个构建阶段(build phase)代表生命周期中的一个阶段。</p>
+</li>
+<li>
+<p>例如，<strong>default</strong> 的生命周期由以下阶段组成（关于生命周期阶段的完整列表，请参考生命周期参考）。</p>
+<ul>
+<li><code>validate</code> 验证 - 验证项目是正确的，所有必要的信息都是可用的</li>
+<li><code>compile</code> 编译 - 编译项目的源代码</li>
+<li><code>test</code> 测试–使用合适的单元测试框架测试编译后的源代码。这些测试不应该要求代码被打包或部署</li>
+<li><code>package</code> 打包–将编译后的代码打包成可分发的格式，如JAR。</li>
+<li><code>verify</code> 验证 - 对<code>集成测试</code>的结果进行任何检查，以确保符合质量标准</li>
+<li><code>install</code> 安装 - 将软件包安装到本地存储库中，以便在本地其他项目中作为依赖项使用</li>
+<li><code>deploy </code>部署–在构建环境中完成，将最终包复制到远程仓库，以便与其他开发者和项目共享。</li>
+</ul>
+</li>
+</ul>
+<p>这些生命周期阶段（加上这里没有显示的其他生命周期阶段）是按顺序执行的，以完成默认的生命周期。考虑到上述生命周期阶段，这意味着在使用默认生命周期时，Maven首先会验证项目，然后尝试编译源代码，针对测试运行源代码，打包二进制文件（如jar），针对该包运行集成测试，验证集成测试，将验证后的包安装到本地仓库，然后将安装后的包部署到远程仓库。</p>
+<h2 id="plugin-goals">Plugin Goals</h2>
+<blockquote>
+<p><a href="/article/packaging-and-goal-or-maven">Packaging &amp; Goal | Maven</a></p>
+</blockquote>
+<p><strong>A Build Phase is Made Up of Plugin Goals</strong></p>
+<p>However, even though a build phase is responsible for a specific step in the build lifecycle, the manner in which it carries out those responsibilities may vary. And this is done by declaring the plugin goals bound to those build phases.</p>
+<p>A plugin goal represents a specific task (finer than a build phase) which contributes to the building and managing of a project.
+It may be bound to <strong>zero or more</strong> build phases.
+A goal not bound to any build phase(bound to zero build phases) could be executed outside of the build lifecycle <strong>by direct invocation</strong>.</p>
+<ul>
+<li>
+<p>The <strong>order of execution</strong> depends on the order in which the goal(s) and the build phase(s) are invoked.</p>
+<ul>
+<li>
+<p>For example, consider the command below. The <code>clean</code> and <code>package</code> arguments are <code>build phases</code>, while the <code>dependency:copy-dependencies</code> is a <code>goal</code> (of a plugin).</p>
+<div><pre class="hljs"><code>mvn clean dependency:copy-dependencies package</code></pre></div>
+<ul>
+<li>If this were to be executed, the <code>clean</code> phase will be executed first (meaning it will run all preceding phases of the clean lifecycle, plus the clean phase itself), and then the <code>dependency:copy-dependencies</code> goal, before finally executing the <code>package</code> phase (and all its preceding build phases of the default lifecycle).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Moreover, if a goal is bound to <strong>one or more</strong> build phases, that goal will be called in all those phases.</p>
+</li>
+<li>
+<p>Furthermore, a <strong>build phase</strong> can also have <strong>zero or more</strong> goals bound to it.</p>
+<ul>
+<li>If a build phase has <strong>no goals</strong> bound to it, that build phase will <strong>not execute</strong>.</li>
+<li>But if it has one or more goals bound to it, it will execute all those goals.</li>
+</ul>
+</li>
+</ul>
+<p>(Note: In Maven 2.0.5 and above, multiple goals bound to a phase are executed in the <strong>same order</strong> as they are declared in the POM, however multiple instances of the same plugin are not supported. Multiple instances of the same plugin are grouped to execute together and ordered in Maven 2.0.11 and above).</p>
+<h2 id="common-commands">Common commands</h2>
+<p>你应该选择符合你的结果的阶段。如果你想要你的<code>jar</code>，运行<code>package</code>。如果你想运行单元测试，运行<code>test</code>。</p>
+<p>如果你不确定你想要什么，首选调用的阶段是</p>
+<div><pre class="hljs"><code>mvn verify</code></pre></div>
+<ul>
+<li>该命令在执行验证之前，按顺序<strong>执行每个</strong> default lifecycle phases（验证、编译、打包等）。
+<ul>
+<li>在大多数情况下，<code>verify</code> 效果与 <code>pacakge</code> 相同。然而，verify 还会执行集成测试。</li>
+<li>在验证阶段还可以做一些额外的检查，例如，如果你的代码是根据预定义的检查方式规则编写的。</li>
+</ul>
+</li>
+</ul>
+<p>在构建环境中，使用下面的调用来干净地构建和部署工件到共享仓库。</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">mvn</span> clean deploy</code></pre></div>
+<p>在多模块情况下（即有一个或多个子项目的项目），也可以使用同一命令。Maven会遍历每个子项目，执行clean，然后执行deploy（包括之前的所有构建阶段步骤）。</p>
+</div>
+      </article>
+    </div>
+  </body>
+</html>

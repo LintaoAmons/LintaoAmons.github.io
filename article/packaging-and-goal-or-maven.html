@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>Packaging &amp; Goal | Maven - Lintao</title>
+  </head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">Lintao</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">Packaging &amp; Goal | Maven</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1651669535842"
+                  >2022-05-04 21:05</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1651670212777"
+                  >2022-05-04 21:16</time
+                ></span
+              >
+            </div>
+            
+            <div>
+              Keywords: 
+              <span class="keyword">maven</span>
+              
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h1 id="packaging-goal-maven">Packaging &amp; Goal | Maven</h1>
+<blockquote>
+<p>#maven
+<a title="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference" href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference">详情看这里</a></p>
+</blockquote>
+<p>不同的 packaging 目标，会绑定不同 goal 到 build phases 上</p>
+<h1 id="jar">jar</h1>
+<blockquote>
+<p><code>&lt;packaging&gt;jar&lt;/packaging&gt;</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>plugin:goal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>process-resources</td>
+<td>resources:resources</td>
+</tr>
+<tr>
+<td>compile</td>
+<td>compiler:compile</td>
+</tr>
+<tr>
+<td>process-test-resources</td>
+<td>resources:testResources</td>
+</tr>
+<tr>
+<td>test-compile</td>
+<td>compiler:testCompile</td>
+</tr>
+<tr>
+<td>test</td>
+<td>surefire:test</td>
+</tr>
+<tr>
+<td>package</td>
+<td>jar:jar</td>
+</tr>
+<tr>
+<td>install</td>
+<td>install:install</td>
+</tr>
+<tr>
+<td>deploy</td>
+<td>deploy:deploy</td>
+</tr>
+</tbody>
+</table>
+<h1 id="pom">pom</h1>
+<blockquote>
+<p><code>&lt;packagin&gt;pom&lt;/packagin&gt;</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>plugin:goal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>install</td>
+<td>install:install</td>
+</tr>
+<tr>
+<td>deploy</td>
+<td>deploy:deploy</td>
+</tr>
+</tbody>
+</table>
+</div>
+      </article>
+    </div>
+  </body>
+</html>

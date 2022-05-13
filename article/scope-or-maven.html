@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>依赖范围 Scope | Maven - Lintao</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">Lintao</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">依赖范围 Scope | Maven</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1651375563512"
+                  >2022-05-01 11:26</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1651378033644"
+                  >2022-05-01 12:07</time
+                ></span
+              >
+            </div>
+            
+            <div>
+              Keywords: 
+              <span class="keyword">maven</span>
+              
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h1 id="依赖范围-scope-maven">依赖范围 Scope | Maven</h1>
+<blockquote>
+<p>#maven
+<a href="/article/or-maven-4">依赖查看 | Maven</a></p>
+</blockquote>
+<ul>
+<li>
+<p>标签的位置</p>
+<div><pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span>  -------------&gt; here
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span></code></pre></div>
+</li>
+<li>
+<p>标签的可选值：</p>
+<ul>
+<li>“compile”|“test”|“provided”|“system”|“runtime”|“import”</li>
+<li>不写默认是 <code>compile</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="时空有效性">时空有效性</h1>
+<ul>
+<li>
+<p>legend: true 有效； false 无效</p>
+</li>
+<li>
+<p><code>compile</code></p>
+<ul>
+<li><code>main目录（空间）</code> 有效</li>
+<li><code>test目录（空间）</code> 有效</li>
+<li><code>开发过程（时间）</code> 有效</li>
+<li><code>部署到服务器（时间）</code> 有效</li>
+</ul>
+</li>
+<li>
+<p><code>test</code></p>
+<ul>
+<li><code>main目录（空间）</code> false</li>
+<li><code>test目录（空间）</code> 有效</li>
+<li><code>开发过程（时间）</code> 有效</li>
+<li><code>部署到服务器（时间）</code> false</li>
+</ul>
+</li>
+<li>
+<p><code>provided</code></p>
+<ul>
+<li><code>main目录（空间）</code> true</li>
+<li><code>test目录（空间）</code> true</li>
+<li><code>开发过程（时间）</code> true</li>
+<li><code>部署到服务器（时间）</code> false</li>
+</ul>
+</li>
+</ul>
+<h1 id="结论">结论</h1>
+<ul>
+<li>
+<p><code>compile</code>：通常使用的第三方框架的 <code>jar</code> 包这样在项目实际运行时真正要用到的 <code>jar</code> 包都是以 <code>compile</code> 范围进行依赖的。比如 <code>SSM</code> 框架所需<code>jar</code>包。</p>
+</li>
+<li>
+<p><code>test</code>：测试过程中使用的 <code>jar</code> 包，以 <code>test</code> 范围依赖进来。比如 <code>junit</code>。</p>
+</li>
+<li>
+<p><code>provided</code>：在开发过程中需要用到的“服务器上的 jar 包”通常以 provided 范围依赖进来。比如 servlet-api、jsp-api。而这个范围的 jar 包之所以不参与部署、不放进 war 包，就是避免和服务器上已有的同类 jar 包产生冲突，同时减轻服务器的负担。说白了就是：“服务器上已经有了，你就别带啦！”</p>
+</li>
+</ul>
+</div>
+      </article>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>classpath | Maven - Lintao</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">Lintao</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">classpath | Maven</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1651656462497"
+                  >2022-05-04 17:27</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1651726524612"
+                  >2022-05-05 12:55</time
+                ></span
+              >
+            </div>
+            
+            <div>
+              Keywords: 
+              <span class="keyword">spring</span>
+              
+              <span class="keyword">maven</span>
+              
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h1 id="classpath-maven">classpath | Maven</h1>
+<blockquote>
+<p>#maven #spring</p>
+</blockquote>
+<p>classpath 这个概念困惑了非常久，从接触到这个东西，到现在写下这篇笔记，我都是云里雾里的,现在学到Maven，基本上可以说是真正理解了。</p>
+<h1 id="项目结构">项目结构</h1>
+<blockquote>
+<p><a href="/article/pom-or-maven">POM | Maven</a></p>
+</blockquote>
+<div><pre class="hljs"><code>.
+├── mvnw    # --&gt; mvn wrapper，可执行程序，保证了各个开发人员用的mvn的一致性
+├── pom.xml # --&gt; [POM | Maven](:/<span class="hljs-number">5</span>b8b8eea51db43ab92ba86e743d6c321)
+├── src     # --&gt; 项目源代码的根目录
+│   ├── main    # --&gt; 生产代码(production <span class="hljs-keyword">code</span>),最后真正上去服务器跑的代码
+│   │   ├── kotlin    # --&gt; kotlin 源代码
+│   │   ├── java      # --&gt; java 源代码
+│   │   └── resources # --&gt; 静态资源,不仅仅是 application.yml, etc.
+│   └── test          # --&gt; 测试代码的目录
+│       └── kotlin    # --&gt; kotlin 测试代码
+└── target    # --&gt; 编译打包后的产出都在这里
+    ├── accountsystem<span class="hljs-number">-0.0</span><span class="hljs-number">.1</span>-SNAPSHOT.jar    # --&gt; 生成的jar包
+    ├── accountsystem<span class="hljs-number">-0.0</span><span class="hljs-number">.1</span>-SNAPSHOT.jar.original
+    ├── classes    # --&gt; 这里就是传说中的 classpath, 放 <span class="hljs-keyword">class</span> 的地方, resource 包下的静态资源直接就都放这个目录下面了；这里也是代码里面，文件相对路径的起点
+    │   ├── META-INF
+    │   ├── application.yml    # --&gt; resource 目录里面的 application.yml
+    │   └── top    # --&gt; 顶级 package
+    ├── generated-sources
+    ├── generated-test-sources
+    ├── surefire-reports
+    └── test-classes
+        ├── META-INF
+        └── top</code></pre></div>
+</div>
+      </article>
+    </div>
+  </body>
+</html>

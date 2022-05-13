@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>Minimal POM | Maven - Lintao</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">Lintao</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">Minimal POM | Maven</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1652430346503"
+                  >2022-05-13 16:25</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1652430909794"
+                  >2022-05-13 16:35</time
+                ></span
+              >
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h1 id="minimal-pom-maven">Minimal POM | Maven</h1>
+<h2 id="minimum-requirement">Minimum requirement</h2>
+<p>The minimum requirement for a POM are the following:</p>
+<ul>
+<li><code>project</code> root, 根节点</li>
+<li><code>modelVersion</code> - should be set to 4.0.0, 就不用管</li>
+<li>坐标三节点
+<ul>
+<li><code>groupId</code> - the id of the project’s group.</li>
+<li><code>artifactId</code> - the id of the artifact (project)</li>
+<li><code>version</code> - the version of the artifact under the specified group</li>
+<li>These three values form the project’s <strong>fully qualified artifact name</strong>(产物的全限定名, 类似java的全类名).</li>
+</ul>
+</li>
+</ul>
+<h2 id="example">Example:</h2>
+<div><pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">project</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.mycompany.app<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>my-app<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span></code></pre></div>
+<p>A POM requires that its groupId, artifactId, and version be configured. These three values form the project’s fully qualified artifact name. This is in the form of <code>&lt;groupId&gt;:&lt;artifactId&gt;:&lt;version&gt;</code>. As for the example above, its fully qualified artifact name is <code>com.mycompany.app:my-app:1</code>.</p>
+<h2 id="default-values">Default Values</h2>
+<h3 id="packaging">packaging</h3>
+<blockquote>
+<p><a href="/article/pom-or-maven">POM | Maven#基础pom文件解读</a></p>
+</blockquote>
+<p>Also, as mentioned in the first section, if the configuration details are not specified, Maven will use their defaults. One of these default values is the <strong>packaging type</strong>. Every Maven project has a packaging type. If it is not specified in the POM, then the <strong>default value “jar”</strong> would be used.</p>
+<h3 id="repositories">repositories</h3>
+<p>Furthermore, you can see that in the minimal POM the repositories were not specified. If you build your project using the minimal POM, it would inherit the repositories configuration in the Super POM. Therefore when Maven sees the dependencies in the minimal POM, it would know that these dependencies will be downloaded from <code>https://repo.maven.apache.org/maven2</code> which was <strong>specified in the Super POM</strong>.</p>
+</div>
+      </article>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>Super POM - Lintao</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">Lintao</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">Super POM</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1652430144472"
+                  >2022-05-13 16:22</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1652430292499"
+                  >2022-05-13 16:24</time
+                ></span
+              >
+            </div>
+            
+            <div>
+              Keywords: 
+              <span class="keyword">maven</span>
+              
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h1 id="super-pom">Super POM</h1>
+<blockquote>
+<p><a title="https://maven.apache.org/ref/3.6.3/maven-model-builder/super-pom.html" href="https://maven.apache.org/ref/3.6.3/maven-model-builder/super-pom.html">SuperPom</a>
+<a href="/article/pom-or-maven">POM | Maven</a></p>
+</blockquote>
+<p>The Super POM is Maven’s default POM. All POMs extend the Super POM unless explicitly set, meaning the configuration specified in the Super POM is inherited by the POMs you created for your projects.</p>
+<ul>
+<li>where is the SuperPom: <a title="https://stackoverflow.com/questions/6797209/where-is-super-pom-for-maven-3" href="https://stackoverflow.com/questions/6797209/where-is-super-pom-for-maven-3">https://stackoverflow.com/questions/6797209/where-is-super-pom-for-maven-3</a></li>
+</ul>
+<h2 id="一系列默认值">一系列默认值</h2>
+<ul>
+<li><code>repositories</code></li>
+<li><code>pluginRepositories</code></li>
+<li><code>build</code>
+<ul>
+<li><strong>这里面定义了一系列的路径，这些路径就是项目结构的convention</strong></li>
+</ul>
+</li>
+</ul>
+<div><pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">project</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">repositories</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">repository</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>central<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Central Repository<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>https://repo.maven.apache.org/maven2<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">layout</span>&gt;</span>default<span class="hljs-tag">&lt;/<span class="hljs-name">layout</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">snapshots</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">enabled</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">enabled</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">snapshots</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">repository</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">repositories</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">pluginRepositories</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">pluginRepository</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>central<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Central Repository<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>https://repo.maven.apache.org/maven2<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">layout</span>&gt;</span>default<span class="hljs-tag">&lt;/<span class="hljs-name">layout</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">snapshots</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">enabled</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">enabled</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">snapshots</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">releases</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">updatePolicy</span>&gt;</span>never<span class="hljs-tag">&lt;/<span class="hljs-name">updatePolicy</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">releases</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">pluginRepository</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">pluginRepositories</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">directory</span>&gt;</span>${project.basedir}/target<span class="hljs-tag">&lt;/<span class="hljs-name">directory</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">outputDirectory</span>&gt;</span>${project.build.directory}/classes<span class="hljs-tag">&lt;/<span class="hljs-name">outputDirectory</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">finalName</span>&gt;</span>${project.artifactId}-${project.version}<span class="hljs-tag">&lt;/<span class="hljs-name">finalName</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">testOutputDirectory</span>&gt;</span>${project.build.directory}/test-classes<span class="hljs-tag">&lt;/<span class="hljs-name">testOutputDirectory</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sourceDirectory</span>&gt;</span>${project.basedir}/src/main/java<span class="hljs-tag">&lt;/<span class="hljs-name">sourceDirectory</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">scriptSourceDirectory</span>&gt;</span>${project.basedir}/src/main/scripts<span class="hljs-tag">&lt;/<span class="hljs-name">scriptSourceDirectory</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">testSourceDirectory</span>&gt;</span>${project.basedir}/src/test/java<span class="hljs-tag">&lt;/<span class="hljs-name">testSourceDirectory</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">resources</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">resource</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">directory</span>&gt;</span>${project.basedir}/src/main/resources<span class="hljs-tag">&lt;/<span class="hljs-name">directory</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">resource</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">resources</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">testResources</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">testResource</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">directory</span>&gt;</span>${project.basedir}/src/test/resources<span class="hljs-tag">&lt;/<span class="hljs-name">directory</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">testResource</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">testResources</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">pluginManagement</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- <span class="hljs-doctag">NOTE:</span> These plugins will be removed from future versions of the super POM --&gt;</span>
+      <span class="hljs-comment">&lt;!-- They are kept for the moment as they are very unlikely to conflict with lifecycle mappings (MNG-4453) --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-antrun-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-assembly-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.2-beta-5<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-dependency-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.8<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-release-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.5.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">pluginManagement</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">reporting</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">outputDirectory</span>&gt;</span>${project.build.directory}/site<span class="hljs-tag">&lt;/<span class="hljs-name">outputDirectory</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">reporting</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">profiles</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- <span class="hljs-doctag">NOTE:</span> The release profile will be removed from future versions of the super POM --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">profile</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>release-profile<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">activation</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>performRelease<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">activation</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">inherited</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">inherited</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-source-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">executions</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">execution</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>attach-sources<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">goals</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">goal</span>&gt;</span>jar-no-fork<span class="hljs-tag">&lt;/<span class="hljs-name">goal</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">goals</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">execution</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">executions</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">inherited</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">inherited</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-javadoc-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">executions</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">execution</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>attach-javadocs<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">goals</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">goal</span>&gt;</span>jar<span class="hljs-tag">&lt;/<span class="hljs-name">goal</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">goals</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">execution</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">executions</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">inherited</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">inherited</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-deploy-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">updateReleaseInfo</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">updateReleaseInfo</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">profile</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">profiles</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span></code></pre></div>
+</div>
+      </article>
+    </div>
+  </body>
+</html>

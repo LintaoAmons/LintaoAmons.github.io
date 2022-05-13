@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>依赖传递 ｜ Maven - Lintao</title>
+  </head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">Lintao</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">依赖传递 ｜ Maven</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1651399080659"
+                  >2022-05-01 17:58</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1651399142229"
+                  >2022-05-01 17:59</time
+                ></span
+              >
+            </div>
+            
+            <div>
+              Keywords: 
+              <span class="keyword">maven</span>
+              
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h1 id="依赖传递-maven">依赖传递 ｜ Maven</h1>
+<blockquote>
+<p>#maven
+<a href="/article/scope-or-maven">依赖范围 Scope | Maven</a>
+<a href="/article/or-maven-4">依赖查看 | Maven</a></p>
+</blockquote>
+<h1 id="传递的原则">传递的原则</h1>
+<ul>
+<li>在 A 依赖 B，B 依赖 C 的前提下，C 是否能够传递到 A，取决于 B 依赖 C 时使用的依赖范围。
+<ul>
+<li>B 依赖 C 时使用 <strong>compile</strong> 范围：可以传递</li>
+<li>B 依赖 C 时使用 test 或 provided 范围：不能传递，所以需要这样的 jar 包时，就必须在需要的地方明确配置依赖才可以。</li>
+</ul>
+</li>
+</ul>
+</div>
+      </article>
+    </div>
+  </body>
+</html>
